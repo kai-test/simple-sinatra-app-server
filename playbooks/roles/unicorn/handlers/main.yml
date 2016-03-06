@@ -1,0 +1,8 @@
+- name: Restart Unicorn
+  service: 
+    name: unicorn
+    state: restarted
+  sudo: true
+  tags:
+    - install
+    - install_unicorn

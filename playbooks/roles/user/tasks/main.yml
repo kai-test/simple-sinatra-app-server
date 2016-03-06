@@ -1,0 +1,38 @@
+- name: Create Web Account Group
+  group:
+    name: "{{ web_group }}"
+    gid: "{{ web_group_gid }}"
+    state: present
+  sudo: true
+  tags:
+    - install
+    - create-user
+
+
+- name: Create unicorn Account User
+  user:
+    name: "{{ unicorn_user }}"
+    uid: "{{ unicorn_user_uid }}"
+    group: "{{ web_group }}"
+    home: "/home/{{ unicorn_user }}"
+    shell: "/bin/bash"
+  sudo: true
+  tags:
+    - install
+    - create-user
+
+
+- name: Create Eginx Account User
+  user:
+    name: "{{ nginx_user }}"
+    uid: "{{ nginx_user_uid }}"
+    group: "{{ web_group }}"
+    home: "/home/{{ nginx_user }}"
+    shell: "/bin/bash"
+  sudo: true
+  tags:
+    - install
+    - create-user
+
+
+

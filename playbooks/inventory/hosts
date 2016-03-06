@@ -1,0 +1,1 @@
+simple-sinatra-app-server ansible_ssh_host=192.168.50.5 ansible_ssh_port=22 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/sinatra-app-server/virtualbox/private_key

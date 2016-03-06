@@ -1,0 +1,8 @@
+unicorn_user: unicorn
+unicorn_user_uid: 1002
+nginx_user: nginx
+nginx_user_uid: 1003
+web_group: web
+web_group_gid: 493
+web_app_path: /home/unicorn/WebApp
+web_app_name: simple-sinatra-app

@@ -1,0 +1,169 @@
+- name: Install Latest Version of Unicorn
+  apt:
+    name: unicorn
+    state: present
+    update_cache: yes
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Gem Install Ruby Packages
+  shell: "gem install {{ item }}"
+  with_items:
+    - sinatra
+    - tilt
+    - rack-protection
+  changed_when: false
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Ensure Web App Directory Exists
+  file:
+    path: "{{ web_app_path }}"
+    state: directory
+    owner: "{{ unicorn_user }}"
+    mode: "755"
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Ensure Web App Project Directory Exists
+  file:
+    path: "{{ web_app_path }}/{{ web_app_name }}"
+    state: directory
+    owner: "{{ unicorn_user }}"
+    mode: "755"
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Copy Helloworld.rb to Web Server
+  copy:
+    src: "helloworld.rb"
+    dest: "{{ web_app_path }}/{{ web_app_name }}/helloworld.rb"
+    owner: "{{ unicorn_user }}"
+    mode: "644"
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Copy Gem File in Project Directory
+  copy:
+    src: "Gemfile"
+    dest: "{{ web_app_path }}/{{ web_app_name }}/Gemfile"
+    owner: "{{ unicorn_user }}"
+    mode: "644"
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Copy config.ru to Project Directory
+  copy:
+    src: "config.ru"
+    dest: "{{ web_app_path }}/{{ web_app_name }}/config.ru"
+    owner: "{{ unicorn_user }}"
+    mode: "644"
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Ensure Unicorn Configuration Directory Exists
+  file:
+    path: "{{ web_app_path }}/{{ web_app_name }}/config"
+    state: directory
+    owner: "{{ unicorn_user }}"
+    mode: "744"
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Deply Unicorn Configuration File
+  template:
+    src: "unicorn.rb.j2"
+    dest: "{{ web_app_path }}/{{ web_app_name }}/config/unicorn.rb"
+    owner: "{{ unicorn_user }}"
+    mode: "644"
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Deply Unicorn Configuration File
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ unicorn_user }}"
+    mode: "755"
+  with_items:
+    - "{{ web_app_path }}/{{ web_app_name }}/log"
+    - "{{ web_app_path }}/{{ web_app_name }}/shared/pids"
+    - "{{ web_app_path }}/{{ web_app_name }}/shared/sockets"
+  sudo: true
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Config Unicorn Service
+  template:
+    src: "unicorn.j2"
+    dest: "/etc/default/unicorn"
+    mode: "644"
+  sudo: true
+  notify:
+    - Restart Unicorn
+  tags:
+    - install
+    - install_unicorn
+
+
+- name: Restart Unicorn
+  service: 
+    name: unicorn
+    state: restarted
+  sudo: true
+  tags:
+    - restart_service
+    - restart_unicorn
+
+
+- name: Stop Unicorn
+  service: 
+    name: unicorn
+    state: stopped
+  sudo: true
+  tags:
+    - stop_service
+    - stop_unicorn
+
+
+- name: Start Unicorn
+  service: 
+    name: unicorn
+    state: started
+  sudo: true
+  tags:
+    - start_service
+    - start_unicorn
+
+
+
+

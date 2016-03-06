@@ -1,0 +1,12 @@
+- name: Deploy Sinatra App Server
+  hosts: simple-sinatra-app-server
+  gather_facts: true
+  sudo: true
+  vars_files:
+    - common-var.yml
+  roles:
+    - base_package
+    - user
+    - unicorn
+    - nginx
+    - security

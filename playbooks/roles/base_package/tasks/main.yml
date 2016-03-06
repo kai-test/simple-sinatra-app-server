@@ -1,0 +1,14 @@
+- name: Install Base Packages
+  apt: 
+    pkg: "{{ item }}" 
+    update_cache: yes 
+  sudo: True
+  with_items:
+    - git
+    - gem
+    - bundler
+  tags:
+    - install
+    - install_package
+
+
