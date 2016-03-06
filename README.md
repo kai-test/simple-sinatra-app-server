@@ -32,7 +32,7 @@ Note: I forward the port 80 of guest VM to the port 3080 of host.
 
 
 ######  Step 4. After Ansible run is complete, you should be able to do the test:   
-* On Host machine, use web browser to check the ip (0.0.0.0:3080). The webpage should show 'Hello World!'.
+* On Host machine, use web browser to check the ip (0.0.0.0:3080 or 192.168.50.5).  The webpage should show 'Hello World!'.
 * Go inside the Guest VM (via 'vagrant ssh'), try 'curl 0.0.0.0:80', should  get the 'Hello World!' as output.
 
 
