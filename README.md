@@ -37,7 +37,7 @@ Note: I forward the port 80 of guest VM to the port 3080 of host.
 
 
 ## Note:
-###### In real-world, except Vagrant VM, other types of machine such as bare-metal, AWS EC2 instance, Openstack Nova instance can be deployed using this Ansible receipt. To do that, simply add destination machhine's IP address to the inventory file: 
+###### In real-world, except Vagrant VM, other types of machine such as bare-metal, AWS EC2 instance, Openstack Nova instance can be deployed using this Ansible receipt. To do that, simply add destination machine's IP address to the inventory file: 
 
 
     ~/vagrant/simple-sinatra-app-server/playbooks/inventory/hosts
