@@ -24,7 +24,7 @@ Provision a new application server and deploy the Sinatra application
 Note: I forward the port 80 of guest VM to the port 3080 of host.
 
 
-######  Step 3. After VM is up and running, use Ansible to 1) Create system users 2) Install base packages, Ruby, Unicorn, Nginx. 3) Do security configuration (firewall blocks all incoming traffics except SSH, HTTP and HTTPS, root direct login is blocked, password authentication is disabled and only key authentication is allowed).
+######  Step 3. After VM is up and running, use Ansible to 1) Create two system users - 'unicorn' and 'nginx'  2) Install base system packages, Ruby, Unicorn, Nginx. 3) Configure security rules: a) Enable firewall to block all incoming traffics except SSH, HTTP and HTTPS. b) Disable 'root' direct login. c) Disable password authentication and only allow key authentication.
 
     cd ~/vagrant/simple-sinatra-app-server
     export ANSIBLE_HOST_KEY_CHECKING=False
@@ -33,11 +33,11 @@ Note: I forward the port 80 of guest VM to the port 3080 of host.
 
 ######  Step 4. After Ansible run is complete, you should be able to do the test:   
 * On Host machine, use web browser to check the ip (0.0.0.0:3080). The webpage should show 'Hello World!'.
-* Go inside the Guest VM (via 'vagrant ssh'), 'curl 0.0.0.0:80 'to get the 'Hello World!' as output.
+* Go inside the Guest VM (via 'vagrant ssh'), try 'curl 0.0.0.0:80', should  get the 'Hello World!' as output.
 
 
 ## Note:
-###### In real-world, except Vagrant VM, any type of machines such as bare-metal, AWS EC2 instance, Openstack Nova instance can be deployed using this Ansible receipt. To do that, simply add destination machhine address to the inventory file: 
+###### In real-world, except Vagrant VM, other types of machine such as bare-metal, AWS EC2 instance, Openstack Nova instance can be deployed using this Ansible receipt. To do that, simply add destination machhine's IP address to the inventory file: 
 
 
     ~/vagrant/simple-sinatra-app-server/playbooks/inventory/hosts
