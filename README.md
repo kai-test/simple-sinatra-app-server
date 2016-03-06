@@ -8,7 +8,7 @@ Provision a new application server and deploy the Sinatra application
 * [Ansible](http://http://docs.ansible.com/ansible/intro_installation.html)
 
 
-######  Step 1. Download the Repo,  Include a Vagrant file and Ansible Playbook
+######  Step 1. Download the Vagrant file and Ansible Playbooks from the git repo.
 
     mkdir ~/vagrant
     cd ~/vagrant
