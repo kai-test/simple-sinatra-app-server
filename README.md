@@ -1,7 +1,9 @@
 # simple-sinatra-app-server
-Provision a new application server and deploy the Sinatra application
+Provision a new application server and deploy the Sinatra application. 
 
-## Prerequisite for Deployment (Need to be installed)
+To use this receipt, first we need a Linux or OSX host, get the VirtualBox, Vagrant, Git, and Ansible installed on the host. Then use Vagrant to spin up a vanilla VM. Finally use Ansible to deploy the Sinatra app server. Details are as below:
+
+## Prerequisite for Deployment (Need to be installed on Host)
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com/)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -24,7 +26,7 @@ Provision a new application server and deploy the Sinatra application
 Note: I forward the port 80 of guest VM to the port 3080 of host.
 
 
-######  Step 3. After VM is up and running, use Ansible to 1) Create two system users - 'unicorn' and 'nginx'  2) Install base system packages, Ruby, Unicorn, Nginx. 3) Configure security rules: a) Enable firewall to block all incoming traffics except SSH, HTTP and HTTPS. b) Disable 'root' direct ssh login. c) Disable ssh password authentication and only allow ssh key authentication.
+######  Step 3. After VM is up and running, we will use Ansible to deploy the Sinatra app server (commands are as shown below). It includes the following configurations: 1) Create two system users - 'unicorn' and 'nginx'  2) Install base system packages, Ruby, Unicorn, Nginx. 3) Configure security rules: a) Enable firewall to block all incoming traffics except SSH, HTTP and HTTPS. b) Disable 'root' direct ssh login. c) Disable ssh password authentication and only allow ssh key authentication.
 
     cd ~/vagrant/simple-sinatra-app-server
     export ANSIBLE_HOST_KEY_CHECKING=False
