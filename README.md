@@ -5,7 +5,7 @@ Provision a new application server and deploy the Sinatra application
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com/)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [Ansible](http://http://docs.ansible.com/ansible/intro_installation.html)
+* [Ansible](http://docs.ansible.com/ansible/intro_installation.html#installing-the-control-machine)
 
 ## Machine Provision, Server Configuration and Test 
 ######  Step 1. Download the Vagrant file and Ansible Playbooks from the git repo.
