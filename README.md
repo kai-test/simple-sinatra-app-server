@@ -24,7 +24,7 @@ Provision a new application server and deploy the Sinatra application
 Note: I forward the port 80 of guest VM to the port 3080 of host.
 
 
-######  Step 3. After VM is up and running, use Ansible to 1) Create two system users - 'unicorn' and 'nginx'  2) Install base system packages, Ruby, Unicorn, Nginx. 3) Configure security rules: a) Enable firewall to block all incoming traffics except SSH, HTTP and HTTPS. b) Disable 'root' direct login. c) Disable password authentication and only allow key authentication.
+######  Step 3. After VM is up and running, use Ansible to 1) Create two system users - 'unicorn' and 'nginx'  2) Install base system packages, Ruby, Unicorn, Nginx. 3) Configure security rules: a) Enable firewall to block all incoming traffics except SSH, HTTP and HTTPS. b) Disable 'root' direct ssh login. c) Disable ssh password authentication and only allow ssh key authentication.
 
     cd ~/vagrant/simple-sinatra-app-server
     export ANSIBLE_HOST_KEY_CHECKING=False
